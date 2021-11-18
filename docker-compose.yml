@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  api:
+    image: tellaweb-api-prod  
+    volumes:
+       - ./data:/usr/src/app/data
+       - ./db:/usr/src/app/db
+    build:
+      context: https://github.com/Horizontal-org/tellaweb-nestjs.git#fix-docker
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      COOKIE_DOMAIN: http://app:3000
+    expose:
+      - "3000"
+
+  app:
+    image: tellaweb-tapp-prod
+    build:
+      context: https://github.com/Horizontal-org/tellaweb-frontend.git#main
+      dockerfile: ./Dockerfile
+      args:
+        api_url: "http://api:3000"
+    restart: unless-stopped
+    ports:
+      - 3000:3000
