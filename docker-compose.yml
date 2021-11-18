@@ -7,7 +7,7 @@ services:
        - ./data:/usr/src/app/data
        - ./db:/usr/src/app/db
     build:
-      context: https://github.com/Horizontal-org/tellaweb-nestjs.git#fix-docker
+      context: https://github.com/Horizontal-org/tellaweb-nestjs.git#main
       dockerfile: ./Dockerfile
     restart: unless-stopped
     environment:
