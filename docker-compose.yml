@@ -11,7 +11,7 @@ services:
       dockerfile: ./Dockerfile
     restart: unless-stopped
     environment:
-      JWT_SECRET: ${JWT_SECRET}
+      JWT_SECRET: secret
       COOKIE_DOMAIN: http://app:3000
     expose:
       - "3000"
@@ -26,3 +26,35 @@ services:
     restart: unless-stopped
     ports:
       - 3000:3000
+    environment:
+      VIRTUAL_PORT: 3000
+      VIRTUAL_HOST: web.tella-app.org
+
+  nginx:
+    image: "jwilder/nginx-proxy:latest"
+    container_name: "nginx"
+    volumes:
+        - "html:/usr/share/nginx/html"
+        - "dhparam:/etc/nginx/dhparam"
+        - "vhost:/etc/nginx/vhost.d"
+        - "certs:/etc/nginx/certs"
+        - "htpasswd:/srv/docker/nginx/htpasswd/"
+        - "./nginx-config/proxy_custom_config.conf:/etc/nginx/conf.d/proxy_custom_config.conf:ro"
+        - "/run/docker.sock:/tmp/docker.sock:ro"
+    restart: "always"
+    networks: 
+        - "net"
+    ports:
+        - "80:80"
+        - "443:443"
+
+volumes:
+  certs:
+  html:
+  vhost:
+  dhparam:
+  htpasswd:
+
+networks:
+  net:
+    external: true
