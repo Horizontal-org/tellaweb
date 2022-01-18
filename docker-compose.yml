@@ -11,10 +11,11 @@ services:
       dockerfile: ./Dockerfile
     restart: unless-stopped
     environment:
-      JWT_SECRET: secret
+      PORT: 3001
+      JWT_SECRET: secret  
       COOKIE_DOMAIN: http://app:3000
     expose:
-      - "3000"
+      - "3001"
 
   app:
     image: tellaweb-tapp-prod
@@ -22,13 +23,15 @@ services:
       context: https://github.com/Horizontal-org/tellaweb-frontend.git#main
       dockerfile: ./Dockerfile
       args:
-        api_url: "http://api:3000"
+        api_url: "http://api:3001"
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - 3000:3000      
+    expose:
+      - "3000"
     environment:
       VIRTUAL_PORT: 3000
-      VIRTUAL_HOST: web.tella-app.org
+      VIRTUAL_HOST: beta.web.tella-app.org
 
   nginx:
     image: "jwilder/nginx-proxy:latest"
