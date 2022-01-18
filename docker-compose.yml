@@ -10,6 +10,8 @@ services:
       context: https://github.com/Horizontal-org/tellaweb-nestjs.git#main
       dockerfile: ./Dockerfile
     restart: unless-stopped
+    networks: 
+        - "net"
     environment:
       PORT: 3001
       JWT_SECRET: secret  
@@ -25,8 +27,10 @@ services:
       args:
         api_url: "http://api:3001"
     restart: unless-stopped
-    ports:
-      - 3000:3000      
+    #ports:
+    # - 3000:3000
+    networks:
+        - "net"
     expose:
       - "3000"
     environment:
@@ -42,7 +46,7 @@ services:
         - "vhost:/etc/nginx/vhost.d"
         - "certs:/etc/nginx/certs"
         - "htpasswd:/srv/docker/nginx/htpasswd/"
-        - "./nginx-config/proxy_custom_config.conf:/etc/nginx/conf.d/proxy_custom_config.conf:ro"
+          #- "./nginx-config/proxy_custom_config.conf:/etc/nginx/conf.d/proxy_custom_config.conf:ro"
         - "/run/docker.sock:/tmp/docker.sock:ro"
     restart: "always"
     networks: 
