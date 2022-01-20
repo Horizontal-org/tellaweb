@@ -8,7 +8,6 @@ services:
        - ./db:/usr/src/app/db
     build:
       context: https://github.com/Horizontal-org/tellaweb-nestjs.git#main
-      dockerfile: ./Dockerfile
     restart: unless-stopped
     networks: 
         - "net"
@@ -23,7 +22,6 @@ services:
     image: tellaweb-tapp-prod
     build:
       context: https://github.com/Horizontal-org/tellaweb-frontend.git#main
-      dockerfile: ./Dockerfile
       args:
         api_url: "http://api:3001"
     restart: unless-stopped
