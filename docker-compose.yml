@@ -8,21 +8,75 @@ services:
        - ./db:/usr/src/app/db
     build:
       context: https://github.com/Horizontal-org/tellaweb-nestjs.git#main
-      dockerfile: ./Dockerfile
     restart: unless-stopped
+    networks: 
+        - "net"
     environment:
-      JWT_SECRET: ${JWT_SECRET}
+      PORT: 3001
+      JWT_SECRET: ${JWT_SECRET}  
       COOKIE_DOMAIN: http://app:3000
     expose:
-      - "3000"
+      - "3001"
 
   app:
     image: tellaweb-tapp-prod
     build:
       context: https://github.com/Horizontal-org/tellaweb-frontend.git#main
-      dockerfile: ./Dockerfile
       args:
-        api_url: "http://api:3000"
+        api_url: "http://api:3001"
     restart: unless-stopped
+    networks:
+        - "net"
+    expose:
+      - "3000"
+    environment:
+      VIRTUAL_PORT: 3000
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_HOST: ${VIRTUAL_HOST}
+
+  nginx:
+    image: "jwilder/nginx-proxy:latest"
+    container_name: "nginx"
+    volumes:
+        - "html:/usr/share/nginx/html"
+        - "dhparam:/etc/nginx/dhparam"
+        - "vhost:/etc/nginx/vhost.d"
+        - "certs:/etc/nginx/certs"
+        - "htpasswd:/srv/docker/nginx/htpasswd/"
+        - "./nginx-config/proxy_custom_config.conf:/etc/nginx/conf.d/proxy_custom_config.conf:ro"
+        - "/run/docker.sock:/tmp/docker.sock:ro"
+    restart: "always"
+    networks: 
+        - "net"
     ports:
-      - 3000:3000
+        - "80:80"
+        - "443:443"
+        
+  letsencrypt:
+    image: "jrcs/letsencrypt-nginx-proxy-companion:latest"
+    container_name: "letsencrypt-helper"
+    volumes:
+        - "html:/usr/share/nginx/html"
+        - "dhparam:/etc/nginx/dhparam"
+        - "vhost:/etc/nginx/vhost.d"
+        - "certs:/etc/nginx/certs"
+        - "/run/docker.sock:/var/run/docker.sock:ro"
+    environment:
+        NGINX_PROXY_CONTAINER: "nginx"
+        DEFAULT_EMAIL: "user@domain.com"
+    restart: "always"
+    depends_on:
+        - "nginx"
+    networks: 
+        - "net"
+
+volumes:
+  certs:
+  html:
+  vhost:
+  dhparam:
+  htpasswd:
+
+networks:
+  net:
+    external: true
