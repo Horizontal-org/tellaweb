@@ -17,6 +17,8 @@ services:
       COOKIE_DOMAIN: http://app:3000
     expose:
       - "3001"
+    ports:
+      - "3001:3001"
 
   app:
     image: tellaweb-tapp-prod
