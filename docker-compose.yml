@@ -2,12 +2,10 @@ version: "3.3"
 
 services:
   api:
-    image: tellaweb-api-prod  
+    image: horizontalorg/tellaweb-api
     volumes:
        - ./data:/usr/src/app/data
-       - ./db:/usr/src/app/db
-    build:
-      context: https://github.com/Horizontal-org/tellaweb-nestjs.git#main
+       - ./db:/usr/src/app/db    
     restart: unless-stopped
     networks: 
         - "net"
@@ -21,11 +19,7 @@ services:
       - "3001:3001"
 
   app:
-    image: tellaweb-tapp-prod
-    build:
-      context: https://github.com/Horizontal-org/tellaweb-frontend.git#main
-      args:
-        api_url: "http://api:3001"
+    image: horizontalorg/tellaweb-admin
     restart: unless-stopped
     networks:
         - "net"
