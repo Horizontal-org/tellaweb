@@ -12,7 +12,7 @@ services:
     environment:
       PORT: 3001
       JWT_SECRET: ${JWT_SECRET}  
-      COOKIE_DOMAIN: http://app:3000
+      COOKIE_DOMAIN: ${COOKIE_DOMAIN}
     expose:
       - "3001"
     ports:
