@@ -29,6 +29,7 @@ services:
       VIRTUAL_PORT: 3000
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       LETSENCRYPT_HOST: ${VIRTUAL_HOST}
+      NEXT_PUBLIC_MAPBOX_TOKEN:  ${NEXT_PUBLIC_MAPBOX_TOKEN}
 
   nginx:
     image: "jwilder/nginx-proxy:latest"
