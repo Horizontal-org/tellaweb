@@ -11,12 +11,13 @@ services:
         - "net"
     environment:
       PORT: 3001
+      VIRTUAL_PORT: 3001
+      VIRTUAL_HOST: ${API_VIRTUAL_HOST}
+      LETSENCRYPT_HOST: ${API_VIRTUAL_HOST}
       JWT_SECRET: ${JWT_SECRET}  
       COOKIE_DOMAIN: ${COOKIE_DOMAIN}
     expose:
       - "3001"
-    ports:
-      - "3001:3001"
 
   app:
     image: horizontalorg/tellaweb-admin
