@@ -16,6 +16,7 @@ services:
       LETSENCRYPT_HOST: ${API_VIRTUAL_HOST}
       JWT_SECRET: ${JWT_SECRET}  
       COOKIE_DOMAIN: ${COOKIE_DOMAIN}
+      PUBLIC_DOMAIN:  ${PUBLIC_DOMAIN}
     expose:
       - "3001"
 
