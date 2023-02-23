@@ -17,6 +17,10 @@ services:
       JWT_SECRET: ${JWT_SECRET}  
       COOKIE_DOMAIN: ${COOKIE_DOMAIN}
       PUBLIC_DOMAIN:  ${PUBLIC_DOMAIN}
+      MYSQL_HOST: "${MYSQL_HOST}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
     expose:
       - "3001"
 
