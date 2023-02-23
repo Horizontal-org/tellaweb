@@ -69,12 +69,28 @@ services:
     networks: 
         - "net"
 
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"    
+    expose:
+        - '3306'
+    volumes:
+        - db-data:/var/lib/mysql
+    networks:
+        - "net"
+
 volumes:
   certs:
   html:
   vhost:
   dhparam:
   htpasswd:
+  db-data:
 
 networks:
   net:
