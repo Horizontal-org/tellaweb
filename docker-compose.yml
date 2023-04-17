@@ -27,7 +27,7 @@ services:
       SMTP_PORT: "${SMTP_PORT}"
       SMTP_USER: "${SMTP_USER}"
       SMTP_PASS: "${SMTP_PASS}"
-      SMTP_GLOBAL_FROM: "$ {SMTP_GLOBAL_FROM}"
+      SMTP_GLOBAL_FROM: "${SMTP_GLOBAL_FROM}"
       IP_LOCATION_KEY: "${IP_LOCATION_KEY}"
     expose:
       - "3001"
