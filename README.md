@@ -1,29 +1,32 @@
+
 # Tella Web
 
 This repository includes the recipe for deploying a Tella Web instance (frontend and backend).
 
-## Deployment
 
-```docker-compose build```
+## Prerequisites 
 
-During the execution it's necessary to specify what will be the secret passphrase used during the authentication process. This value cannot be changed, as it will invalidate the stored password hashes. And it must be kept secret.
+- docker (including the compose module)
 
-```JWT_SECRET=something_secret docker-compose up -d```
+- two domains (or subdomains), one for the admin and one for the api, the domains should be pointed to the desired server 
 
-_If you don't want to have to always add the environment variable to the command line you can create an .env file and store it there. docker-compose loads the variables from that file automatically. https://docs.docker.com/compose/environment-variables/#the-env-file_
+- an smtp server credentials
 
-## User management
+## Deploy
+- first you need to clone this repo in the server you want to deploy tellaweb
 
-To add, change permissions or list users run the following command:
+- then you need to copy the .env.example and create a .env with your own credentials (credentials are explained at the .env)
 
-```docker-compose exec api yarn console```
+- create the docker network `docker network create net`
 
-This will display the available subcommands. For example, if we want to add a user named superadmin and with administrator role we must execute the following:
+- after that you should pull the docker images as this:
+    `docker compose pull`
+- then `docker compose up -d`
 
-```docker-compose exec api yarn console users create -a superadmin```
+- first deployment takes a few minutes, you can check the progress with `docker logs`
 
-By running the list command we can see that our user superadmin is added and is an administrator (can access the web and see the reports uploaded by the users).
+## Last steps 
 
-```docker-compose exec api yarn console users list```
+- you need to run migrations `docker compose exec api npm run typeorm migration:run`
 
-
+- and lastly create an admin user `docker compose exec api npm run console -- users create -a youruser@someemail.com`
