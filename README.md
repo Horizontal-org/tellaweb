@@ -3,7 +3,7 @@
 
 This repository includes the recipe for deploying a Tella Web instance (frontend and backend).
 
-## System (recommended) requirements
+## System requirements (recommended) 
 These are our *recommended* system requirements. 
  - RAM: 4GB
  - DISK: 10GB
