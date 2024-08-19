@@ -3,49 +3,42 @@
 
 This repository includes the recipe for deploying a Tella Web instance (frontend and backend).
 
-## System (prefferred) requirements
-This are our *preferred* system requirements, this doesn't mean that tellaweb will not work on less requirements
+## System (recommended) requirements
+These are our *recommended* system requirements. 
  - RAM: 4GB
- - DISK: 10GB 
-
- _if you have running tellaweb in a smaller environment we will be happy to hear about it :D_
+ - DISK: 10GB
+Tella Web should still function on less resources. _If you are running Tella Web on a server with less resources than our recommended set up, we would love to hear about your experience :D_
 
 ## Prerequisites 
 
-- docker (including the compose module)
+- Docker (including the compose module).
 
-- two domains (or subdomains), one for the admin and one for the api, the domains should be pointed to the desired server 
+- Two domains (or subdomains), one for the admin and one for the api. The domains should point to the desired server.
 
-- an smtp server credentials
+- Credentials for an SMTP server.
 
 ## Deploy
-- first you need to clone this repo in the server you want to deploy tellaweb
-
-- then you need to copy the .env.example and create a .env with your own credentials (credentials are explained at the .env)
-> you can see what each variable means in the environment variables table
-
-- create the docker network `docker network create net`
-
-- on your `docker-compose.yml` you should specify what version of tellaweb you want. 
-to check the latest releases you can see our [releases](https://github.com/Horizontal-org/tellaweb/releases) page.
-
-> so for example in the `image` variable of the `api` container instead of "horizontalorg/tellaweb-api" you will put "horizontalorg/tellaweb-api:1.3.1" and the same with the `app` container image 
-
-- after that you should pull the docker images as this:
+1. Clone this repo in the server you want to deploy Tella Web.
+2. Copy the .env.example and create a .env with your own credentials (credentials are explained at the .env).
+   - You can see what each variable means in the environment variables table.
+3. Create the docker network `docker network create net`.
+4. In `docker-compose.yml`, specify what version of Tella Web you want to install. 
+   - You can find the latest releases on our [releases page](https://github.com/Horizontal-org/tellaweb/releases).
+   - For example: in the `image` variable of the `api` container instead of "horizontalorg/tellaweb-api", input "horizontalorg/tellaweb-api:1.3.1" and the same with the `app` container image 
+5. Pull the docker images as this:
     `docker compose pull`
-- then `docker compose up -d`
-
-- first deployment takes a few minutes, you can check the progress with `docker logs`
+6. Then `docker compose up -d`
+7. The first deployment will take a few minutes. You can see the progress with `docker logs`.
 
 ## Last steps 
 
-- you need to run migrations `docker compose exec api npm run typeorm migration:run`
+- Run migrations `docker compose exec api npm run typeorm migration:run`
 
-- and lastly create an admin user `docker compose exec api npm run console -- users create -a youruser@someemail.com`
+- Create an admin user `docker compose exec api npm run console -- users create -a youruser@someemail.com`
 
 ## Environment variables table
 
-> for passwords variables please remember to create strong passphrasaes
+> For passwords variables, please remember to create strong passphrasaes
 
 | Key | Description |
 | --- | ----------- |
