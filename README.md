@@ -15,7 +15,7 @@ These are our *recommended* system requirements.
 
 Tella Web should still function on less resources. _If you are running Tella Web on a server with less resources than our recommended set up, we would love to hear about your experience :D_
 
-For host providers tellaweb is a pretty straightforward application so it should work anywhere you can install docker, that being said we had the best experience using [Digital Ocean D roplets](https://www.digitalocean.com/products/droplets)
+For host providers tellaweb is a pretty straightforward application so it should work anywhere you can install docker, that being said we had the best experience using [Digital Ocean Droplets](https://www.digitalocean.com/products/droplets)
 
 ## Prerequisites 
 
