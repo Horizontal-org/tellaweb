@@ -3,15 +3,15 @@
 
 Tella Web is an open-source tool that enables individuals and organizations to centralize and manage reports sent by Tella users, including photos, videos, and audio files.
 
-This repository includes the recipe for deploying a Tella Web instance (frontend and backend).
+This repository covers instructions for deploying a Tella Web instance (frontend and backend).
 
-> this documentation is for installing tellaweb only, for more info on how to manage and operate your tellaweb instance go to [our docs](https://tella-app.org/tella-web/#set-up-your-project-on-your-server)
+> This documentation only covers instructions to deploy a Tella Web instance. To learn about Tella features [see here](https://tella-app.org/docs) and to learn about how to manage and operate your Tella Web instance [see here](https://tella-app.org/tella-web/#set-up-your-project-on-your-server)
 
 ## System requirements (recommended) 
 These are our *recommended* system requirements. 
  - RAM: 4GB
  - DISK: 10GB
-> For disk space the data stored in tellaweb is in the same server, so consider monitoring the server storage and adding space if needed
+> For disk space, the data stored in Tella Web is in the same server, so consider monitoring server storage and adding space if needed.
 
 Tella Web should still function on less resources. _If you are running Tella Web on a server with less resources than our recommended set up, we would love to hear about your experience :D_
 
@@ -44,7 +44,7 @@ For host providers tellaweb is a pretty straightforward application so it should
 
 - Create an admin user `docker compose exec api npm run console -- users create -a youruser@someemail.com`
 
-- finally, you can go to [our docs](https://tella-app.org/tella-web/#set-up-your-project-on-your-server) to finalize the setup and have an in dept explanation about the features tellaweb has
+- Finally, you can [read here](https://tella-app.org/tella-web/#set-up-your-project-on-your-server) about finalizing the setup, configuring the instance, and Tella Web features.
 
 ## Environment variables table
 
