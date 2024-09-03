@@ -66,25 +66,28 @@ for updating tellaweb we recommend:
 
 > For passwords variables, please remember to create strong passphrasaes
 
-| Key | Description |
-| --- | ----------- |
-| JWT_SECRET | a secret phrase that acts as the seed for all of the jwt tokens we use |
-| VIRTUAL_HOST | admin domain without any prefix |
-| API_VIRTUAL_HOST | api domain without any prefix |
-| COOKIE_DOMAIN | admin domain without any prefix |
-| PUBLIC_DOMAIN | api domain with 'https://' prefix  |
-| ADMIN_DOMAIN | admin domain with 'https://' prefix |
-| MYSQL_HOST | host to connect api to db, should be 'db' |
-| MYSQL_DATABASE | name of the database |
-| MYSQL_USER | name of the user for mysql |
-| MYSQL_PASSWORD | password of the user for mysql |
-| MYSQL_ROOT_PASSWORD | password for the root mysql user |
-| REDIS_PASSWORD | password for accesing redis container |
-| REDIS_HOST | host to connect api to redis, should be 'redis' |
-| SMTP_HOST | host of the email server you are using |
-| SMTP_PORT | port for the connection, should be '25' |
-| SMTP_USER | credentials of your smtp server |
-| SMTP_PASS | credentials of your smtp server |
-| SMTP_GLOBAL_FROM | credentials of your smtp server |
-| IP_LOCATION_KEY | constant for a service we use, shoudn't be overwritten |
-| NEXT_PUBLIC_MAPBOX_TOKEN | constant for a service we use, shoudn't be overwritten |
+| Key | Description | Notes |
+| --- | ----------- |-------|
+| JWT_SECRET | a secret phrase that acts as the seed for all of the jwt tokens we use | required |
+| VIRTUAL_HOST | admin domain without any prefix | required |
+| API_VIRTUAL_HOST | api domain without any prefix | required |
+| COOKIE_DOMAIN | admin domain without any prefix | required |
+| PUBLIC_DOMAIN | api domain with 'https://' prefix  | required |
+| ADMIN_DOMAIN | admin domain with 'https://' prefix | required |
+| MYSQL_HOST | host to connect api to db, should be 'db' | required |
+| MYSQL_DATABASE | name of the database | required |
+| MYSQL_USER | name of the user for mysql | required |
+| MYSQL_PASSWORD | password of the user for mysql | required |
+| MYSQL_ROOT_PASSWORD | password for the root mysql user | required |
+| REDIS_PASSWORD | password for accesing redis container | required |
+| REDIS_HOST | host to connect api to redis, should be 'redis' | required |
+| SMTP_HOST | host of the email server you are using | optional |
+| SMTP_PORT | port for the connection, should be '25' | optional |
+| SMTP_USER | credentials of your smtp server | optional  |
+| SMTP_PASS | credentials of your smtp server | optional  |
+| SMTP_GLOBAL_FROM | credentials of your smtp server | optional |
+| IP_LOCATION_KEY | constant for a service we use, shoudn't be overwritten | optional  |
+| NEXT_PUBLIC_MAPBOX_TOKEN | constant for a service we use, shoudn't be overwritten | optional |
+
+- The [Suspicious Login detection feature](https://tella-app.org/tella-web#admin-center) won't work if the SMTP server and the mapbox services are not working. If won't use those services you need to turn off the feature on the Tella Web Admin Center.
+- The [Feedback feature](https://tella-app.org/tella-web#admin-center) won't work if the SMTP server is not working. If you don't want to configure the SMTP service on your server, you need to turn off the Feedback feature on the Tella Web Admin Center.
