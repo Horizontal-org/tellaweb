@@ -15,7 +15,7 @@ These are our *recommended* system requirements.
 
 Tella Web should still function on less resources. _If you are running Tella Web on a server with less resources than our recommended set up, we would love to hear about your experience :D_
 
-For host providers tellaweb is a pretty straightforward application so it should work anywhere you can install docker, that being said we had the best experience using [Digital Ocean Droplets](https://www.digitalocean.com/products/droplets)
+For host providers tellaweb is a pretty straightforward application so it should work anywhere you can install docker. If you experience any issues please [contact us](https://tella-app.org/contact-us).
 
 ## Prerequisites 
 
@@ -45,6 +45,24 @@ For host providers tellaweb is a pretty straightforward application so it should
 - Create an admin user `docker compose exec api npm run console -- users create -a youruser@someemail.com`
 
 - Finally, you can [read here](https://tella-app.org/tella-web/#set-up-your-project-on-your-server) about finalizing the setup, configuring the instance, and Tella Web features.
+
+
+## Updating and Maintainance
+As a recomendation you should check regularly for new releases of tellaweb in our [releases page](https://github.com/Horizontal-org/tellaweb/releases).
+
+for updating tellaweb we recommend:
+
+1. Doing a backup of the database
+
+2. changing the image name with the release number you want to use both for the api and app containers
+
+3. pulling and upping the new images 
+
+4. run migrations with `npm run typeorm migration:run` inside the api container or as a one line command `docker compose exec api npm run typeorm migration:run`
+
+5. check the logs with `docker logs` to check that everything is working fine
+
+6. remove old images for optimizing space with `docker prune` 
 
 ## Environment variables table
 
