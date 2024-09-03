@@ -13,7 +13,7 @@ These are our *recommended* system requirements.
  - DISK: 10GB
 > For disk space, the data stored in Tella Web is in the same server, so consider monitoring server storage and adding space if needed. Tella Web should still function on less resources. _If you are running Tella Web on a server with less resources than our recommended set up, we would love to hear about your experience :D_
 
-We don't have any particular recomendation about hosting providers tellaweb: is a pretty straightforward application so it should work anywhere you can install docker. If you experience any issues please [contact us](https://tella-app.org/contact-us).
+We don't have any particular recomendation about hosting providers for tellaweb: This is a pretty straightforward application so it should work anywhere you can install docker. If you experience any issues please [contact us](https://tella-app.org/contact-us).
 
 ## Prerequisites 
 
