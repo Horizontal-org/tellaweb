@@ -89,5 +89,5 @@ for updating tellaweb we recommend:
 | IP_LOCATION_KEY | constant for a service we use, shoudn't be overwritten | optional  |
 | NEXT_PUBLIC_MAPBOX_TOKEN | constant for a service we use, shoudn't be overwritten | optional |
 
-- The [Suspicious Login detection feature](https://tella-app.org/tella-web#admin-center) won't work if the SMTP server and the mapbox services are not working. If won't use those services you need to turn off the feature on the Tella Web Admin Center.
-- The [Feedback feature](https://tella-app.org/tella-web#admin-center) won't work if the SMTP server is not working. If you don't want to configure the SMTP service on your server, you need to turn off the Feedback feature on the Tella Web Admin Center.
+- The [Suspicious Login detection feature](https://tella-app.org/tella-web#admin-center) won't work if the SMTP server and the ip location services are not working. If won't use those services you need to turn off the feature on the Tella Web Admin Center.
+
