@@ -46,21 +46,21 @@ We don't have any particular recomendation about hosting providers for tellaweb:
 
 
 ## Updating and Maintainance
-As a recomendation you should check regularly for new releases of tellaweb in our [releases page](https://github.com/Horizontal-org/tellaweb/releases).
+We recommend monitoring our [releases page](https://github.com/Horizontal-org/tellaweb/releases) and updating Tella Web when possible to ensure you get the latest security improvements and new features. 
 
-for updating tellaweb we recommend:
+To update Tella Web, we recommend:
 
-1. Doing a backup of the database
+1. Doing a backup of the database.
 
-2. changing the image name with the release number you want to use both for the api and app containers
+2. Changing the image name with the release number you want to use both for the api and app containers.
 
-3. pulling and upping the new images 
+3. Pulling and upping the new images.
 
-4. run migrations with `npm run typeorm migration:run` inside the api container or as a one line command `docker compose exec api npm run typeorm migration:run`
+4. Running migrations with `npm run typeorm migration:run` inside the api container or as a one line command `docker compose exec api npm run typeorm migration:run`.
 
-5. check the logs with `docker logs` to check that everything is working fine
+5. Checking the logs with `docker logs` to ensure that everything is working properly.
 
-6. remove old images for optimizing space with `docker prune` 
+6. Removing old images to optimize space with `docker prune`.
 
 ## Environment variables table
 
