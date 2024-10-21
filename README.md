@@ -13,7 +13,7 @@ These are our *recommended* system requirements.
  - DISK: 10GB
 > For disk space, the data stored in Tella Web is in the same server, so consider monitoring server storage and adding space if needed. Tella Web should still function on less resources. _If you are running Tella Web on a server with less resources than our recommended set up, we would love to hear about your experience :D_
 
-We don't have any particular recomendation about hosting providers for tellaweb: This is a pretty straightforward application so it should work anywhere you can install docker. If you experience any issues please [contact us](https://tella-app.org/contact-us).
+We don't have any particular recomendation about hosting providers for Tella Web: this is a pretty straightforward application so it should work anywhere you can install Docker. If you experience any issues please [contact us](https://tella-app.org/contact-us).
 
 ## Prerequisites 
 
@@ -22,6 +22,12 @@ We don't have any particular recomendation about hosting providers for tellaweb:
 - Two domains (or subdomains), one for the admin and one for the api. The domains should point to the desired server.
 
 - Credentials for an SMTP server.
+
+## NGINX Configuration
+
+To make Tella Web ready to use out of the box, we added to the Docker Compose file an nginx container and a Let's Encrypt container that creates a ssl certificate for the domains. As a result, by default, the site is served in the :443 port.
+
+To use a different nginx installation or use custom ports, please install and configure nginx manually. However, please note that we have configured Tella Web's default nginx configuration to improve files streaming and that these improvements will be lost in a manual nginx setup. 
 
 ## Deploy
 1. Clone this repo in the server you want to deploy Tella Web.
