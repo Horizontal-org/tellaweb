@@ -13,7 +13,7 @@ These are our *recommended* system requirements.
  - DISK: 10GB
 > For disk space, the data stored in Tella Web is in the same server, so consider monitoring server storage and adding space if needed. Tella Web should still function on less resources. _If you are running Tella Web on a server with less resources than our recommended set up, we would love to hear about your experience :D_
 
-We don't have any particular recomendation about hosting providers for tellaweb: This is a pretty straightforward application so it should work anywhere you can install docker. If you experience any issues please [contact us](https://tella-app.org/contact-us).
+We don't have any particular recomendation about hosting providers for Tella Web: this is a pretty straightforward application so it should work anywhere you can install Docker. If you experience any issues please [contact us](https://tella-app.org/contact-us).
 
 ## Prerequisites 
 
@@ -25,9 +25,9 @@ We don't have any particular recomendation about hosting providers for tellaweb:
 
 ## NGINX Configuration
 
-for out of the box functionality we added nginx and let's encrypt containers that create a ssl certificate for the domain and serves the site in the :443 port
+To make Tella Web as easy to use out of the box, we added nginx and let's encrypt containers that create a ssl certificate for the domain and serves the site in the :443 port.
 
-if for some reason you want to have a different nginx installation or using another port you can by installing nginx by your own means and handling that configuration yourself, please note that any improvements we could make to the nginx config for files streaming won't be supported this way
+To use a different nginx installation or use custom ports, please install and configure nginx manually. However, please note that we have configured Tella Web's default nginx configuration to improve files streaming and that these improvements will be lost in a manual nginx setup. 
 
 ## Deploy
 1. Clone this repo in the server you want to deploy Tella Web.
