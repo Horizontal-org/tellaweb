@@ -23,6 +23,12 @@ We don't have any particular recomendation about hosting providers for tellaweb:
 
 - Credentials for an SMTP server.
 
+## NGINX Configuration
+
+for out of the box functionality we added nginx and let's encrypt containers that create a ssl certificate for the domain and serves the site in the :443 port
+
+if for some reason you want to have a different nginx installation or using another port you can by installing nginx by your own means and handling that configuration yourself, please note that any improvements we could make to the nginx config for files streaming won't be supported this way
+
 ## Deploy
 1. Clone this repo in the server you want to deploy Tella Web.
 2. Copy the .env.example and create a .env with your own credentials (credentials are explained at the .env).
