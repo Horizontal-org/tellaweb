@@ -25,7 +25,7 @@ We don't have any particular recomendation about hosting providers for Tella Web
 
 ## NGINX Configuration
 
-To make Tella Web as easy to use out of the box, we added nginx and let's encrypt containers that create a ssl certificate for the domain and serves the site in the :443 port.
+To make Tella Web ready to use out of the box, we added to the Docker Compose file an nginx container and a Let's Encrypt container that creates a ssl certificate for the domains. As a result, by default, the site is served in the :443 port.
 
 To use a different nginx installation or use custom ports, please install and configure nginx manually. However, please note that we have configured Tella Web's default nginx configuration to improve files streaming and that these improvements will be lost in a manual nginx setup. 
 
