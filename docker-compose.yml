@@ -56,6 +56,7 @@ services:
         - "certs:/etc/nginx/certs"
         - "htpasswd:/srv/docker/nginx/htpasswd/"
         - "./nginx-config/proxy_custom_config.conf:/etc/nginx/conf.d/proxy_custom_config.conf:ro"
+        - "./nginx-config/v_host.conf:/etc/nginx/vhost.d/$API_VIRTUAL_HOST:ro"
         - "/run/docker.sock:/tmp/docker.sock:ro"
     restart: "always"
     networks: 
