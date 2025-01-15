@@ -7,7 +7,7 @@ This repository covers instructions for deploying a Tella Web instance (frontend
 
 > This documentation only covers instructions to deploy a Tella Web instance. To learn about Tella features [see here](https://tella-app.org/docs) and to learn about how to manage and operate your Tella Web instance [see here](https://tella-app.org/tella-web/#set-up-your-project-on-your-server)
 
-## System requirements (recommended) 
+## System requirements
 *Minimum* system requirements: 
  - RAM: 4GB
  - DISK: 10GB
