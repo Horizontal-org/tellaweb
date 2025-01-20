@@ -7,11 +7,14 @@ This repository covers instructions for deploying a Tella Web instance (frontend
 
 > This documentation only covers instructions to deploy a Tella Web instance. To learn about Tella features [see here](https://tella-app.org/docs) and to learn about how to manage and operate your Tella Web instance [see here](https://tella-app.org/tella-web/#set-up-your-project-on-your-server)
 
-## System requirements (recommended) 
-These are our *recommended* system requirements. 
+## System requirements
+*Minimum* system requirements: 
  - RAM: 4GB
  - DISK: 10GB
 > For disk space, the data stored in Tella Web is in the same server, so consider monitoring server storage and adding space if needed. Tella Web should still function on less resources. _If you are running Tella Web on a server with less resources than our recommended set up, we would love to hear about your experience :D_
+
+*Recommended* system requirements:
+Ideal disk space depends on how much data you intend to collect. A good role of thumb would be to allocate the double of the space that users would submit to your server. When monitoring, we recommend for you to aim to have the same amount of free and used space in the server.
 
 We don't have any particular recomendation about hosting providers for Tella Web: this is a pretty straightforward application so it should work anywhere you can install Docker. If you experience any issues please [contact us](https://tella-app.org/contact-us).
 
