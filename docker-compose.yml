@@ -100,14 +100,13 @@ services:
 
   redis:
     image: 'bitnami/redis:latest'
+    mem_limit: 1GB
     environment:
       REDIS_PASSWORD: "${REDIS_PASSWORD}"
     networks:
       - "net"
     expose:
-      - '6379'
-    ports:
-      - 6379:6379
+      - '6379'    
     volumes: 
       - redis-data:/data
 volumes:
