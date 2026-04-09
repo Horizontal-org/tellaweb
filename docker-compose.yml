@@ -4,19 +4,20 @@ services:
   api:
     image: horizontalorg/tellaweb-api
     volumes:
-       - ./data:/usr/src/app/data
-       - ./db:/usr/src/app/db    
+      - ./data:/usr/src/app/data
+      - ./db:/usr/src/app/db
     restart: unless-stopped
-    networks: 
-        - "net"
+    networks:
+      - "net"
     environment:
       PORT: 3001
       VIRTUAL_PORT: 3001
       VIRTUAL_HOST: ${API_VIRTUAL_HOST}
       LETSENCRYPT_HOST: ${API_VIRTUAL_HOST}
-      JWT_SECRET: ${JWT_SECRET}  
+      JWT_SECRET: ${JWT_SECRET}
       COOKIE_DOMAIN: ${COOKIE_DOMAIN}
       PUBLIC_DOMAIN: ${PUBLIC_DOMAIN}
+      MASK_PUBLIC_DOMAIN: ${MASK_PUBLIC_DOMAIN}
       ADMIN_DOMAIN: ${ADMIN_DOMAIN}
       MYSQL_HOST: "${MYSQL_HOST}"
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
@@ -38,51 +39,51 @@ services:
     image: horizontalorg/tellaweb-admin
     restart: unless-stopped
     networks:
-        - "net"
+      - "net"
     expose:
       - "3000"
     environment:
       VIRTUAL_PORT: 3000
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       LETSENCRYPT_HOST: ${VIRTUAL_HOST}
-      NEXT_PUBLIC_MAPBOX_TOKEN:  ${NEXT_PUBLIC_MAPBOX_TOKEN}
+      NEXT_PUBLIC_MAPBOX_TOKEN: ${NEXT_PUBLIC_MAPBOX_TOKEN}
 
   nginx:
     image: "jwilder/nginx-proxy:latest"
     container_name: "nginx"
     volumes:
-        - "html:/usr/share/nginx/html"
-        - "dhparam:/etc/nginx/dhparam"
-        - "vhost:/etc/nginx/vhost.d"
-        - "certs:/etc/nginx/certs"
-        - "htpasswd:/srv/docker/nginx/htpasswd/"
-        - "./nginx-config/proxy_custom_config.conf:/etc/nginx/conf.d/proxy_custom_config.conf:ro"
-        - "./nginx-config/v_host.conf:/etc/nginx/vhost.d/$API_VIRTUAL_HOST:ro"
-        - "/run/docker.sock:/tmp/docker.sock:ro"
+      - "html:/usr/share/nginx/html"
+      - "dhparam:/etc/nginx/dhparam"
+      - "vhost:/etc/nginx/vhost.d"
+      - "certs:/etc/nginx/certs"
+      - "htpasswd:/srv/docker/nginx/htpasswd/"
+      - "./nginx-config/proxy_custom_config.conf:/etc/nginx/conf.d/proxy_custom_config.conf:ro"
+      - "./nginx-config/v_host.conf:/etc/nginx/vhost.d/$API_VIRTUAL_HOST:ro"
+      - "/run/docker.sock:/tmp/docker.sock:ro"
     restart: "always"
-    networks: 
-        - "net"
+    networks:
+      - "net"
     ports:
-        - "80:80"
-        - "443:443"
-        
+      - "80:80"
+      - "443:443"
+
   letsencrypt:
     image: "jrcs/letsencrypt-nginx-proxy-companion:latest"
     container_name: "letsencrypt-helper"
     volumes:
-        - "html:/usr/share/nginx/html"
-        - "dhparam:/etc/nginx/dhparam"
-        - "vhost:/etc/nginx/vhost.d"
-        - "certs:/etc/nginx/certs"
-        - "/run/docker.sock:/var/run/docker.sock:ro"
+      - "html:/usr/share/nginx/html"
+      - "dhparam:/etc/nginx/dhparam"
+      - "vhost:/etc/nginx/vhost.d"
+      - "certs:/etc/nginx/certs"
+      - "/run/docker.sock:/var/run/docker.sock:ro"
     environment:
-        NGINX_PROXY_CONTAINER: "nginx"
-        DEFAULT_EMAIL: "user@domain.com"
+      NGINX_PROXY_CONTAINER: "nginx"
+      DEFAULT_EMAIL: "user@domain.com"
     restart: "always"
     depends_on:
-        - "nginx"
-    networks: 
-        - "net"
+      - "nginx"
+    networks:
+      - "net"
 
   db:
     image: mysql:5.7
@@ -91,24 +92,24 @@ services:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
       MYSQL_USER: "${MYSQL_USER}"
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"    
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
     expose:
-        - '3306'
+      - "3306"
     volumes:
-        - db-data:/var/lib/mysql
+      - db-data:/var/lib/mysql
     networks:
-        - "net"
+      - "net"
 
   redis:
-    image: 'bitnami/redis:latest'
+    image: "bitnami/redis:latest"
     mem_limit: 1GB
     environment:
       REDIS_PASSWORD: "${REDIS_PASSWORD}"
     networks:
       - "net"
     expose:
-      - '6379'    
-    volumes: 
+      - "6379"
+    volumes:
       - redis-data:/data
 volumes:
   certs:
