@@ -6,6 +6,7 @@ services:
     volumes:
       - ./data:/usr/src/app/data
       - ./db:/usr/src/app/db
+      - ./backups:/usr/src/app/backups
     restart: unless-stopped
     networks:
       - "net"
